@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💖 Valentine's Day</title>
+<link rel="icon" href="https://e7.pngegg.com/pngimages/319/414/png-clipart-heart-love-valentines-day-loveheart-love-heart.png">
+<style>
+    /* Основные стили для страницы */
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+        background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+        background-size: 400% 400%;
+        animation: gradientBG 15s ease infinite;
+    }
+
+    /* Анимация для фона */
+    @keyframes gradientBG {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    /* Контейнер для содержимого */
+    .container {
+        background: rgba(255, 255, 255, 0.8);
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Текст валентинки */
+    #valentine-text {
+        font-size: 48px;
+        color: #a83279;
+        margin-bottom: 30px;
+        font-family: 'Brush Script MT', cursive;
+        animation: fadeIn 2s ease-in-out;
+    }
+
+    /* Общие стили для кнопок */
+    .button {
+        padding: 25px 50px; /* Увеличиваем размер кнопок */
+        font-size: 28px; /* Увеличиваем размер текста */
+        cursor: pointer;
+        margin: 0 20px;
+        border-radius: 30px;
+        border: none;
+        outline: none;
+        transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    /* Стили для кнопки "Да" */
+    #yes-button {
+        background-color: #e91e63;
+        color: white;
+    }
+    #yes-button:hover {
+        background-color: #c2185b;
+        transform: scale(1.1);
+    }
+
+    /* Стили для кнопки "Нет" */
+    #no-button {
+        background-color: #9c27b0;
+        color: white;
+        transition: left 1s ease, top 1s ease; /* Добавляем плавное перемещение */
+    }
+    #no-button:hover {
+        background-color: #7b1fa2;
+    }
+
+    /* Стили для гифки */
+    .valentine-gif {
+        width: 480px;
+        height: 390px;
+        margin: 20px auto;
+        animation: float 3s ease-in-out infinite;
+    }
+
+    /* Анимация для текста */
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    /* Анимация для плавающего эффекта */
+    @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-20px); }
+    }
+
+    /* Стили для плавающих сердечек */
+    .floating-hearts {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        overflow: hidden;
+    }
+    .floating-hearts span {
+        position: absolute;
+        display: block;
+        width: 20px;
+        height: 20px;
+        background: url('https://www.pngmart.com/files/8/Heart-PNG-Transparent.png') no-repeat center/cover;
+        animation: floatHearts 10s linear infinite;
+        bottom: -150px;
+    }
+    .floating-hearts span:nth-child(1) {
+        left: 25%;
+        animation-delay: 0s;
+    }
+    .floating-hearts span:nth-child(2) {
+        left: 10%;
+        animation-delay: 2s;
+        animation-duration: 12s;
+    }
+    .floating-hearts span:nth-child(3) {
+        left: 70%;
+        animation-delay: 4s;
+    }
+    .floating-hearts span:nth-child(4) {
+        left: 50%;
+        animation-delay: 6s;
+        animation-duration: 14s;
+    }
+    .floating-hearts span:nth-child(5) {
+        left: 85%;
+        animation-delay: 8s;
+    }
+
+    /* Анимация для плавающих сердечек */
+    @keyframes floatHearts {
+        0% {
+            transform: translateY(0) rotate(0deg);
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(-1000px) rotate(720deg);
+            opacity: 0;
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Плавающие сердечки -->
+    <div class="floating-hearts">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <!-- Гифка -->
+    <img class="valentine-gif" src="https://i.pinimg.com/originals/c1/f3/02/c1f302789537640d8254fd1f628b2b0e.gif" alt="Валентинка">
+
+    <!-- Текст -->
+    <div id="valentine-text">Ты будешь моей валентинкой? 💖</div>
+
+    <!-- Кнопки -->
+    <button id="yes-button" class="button">Да</button>
+    <button id="no-button" class="button">Нет</button>
+</div>
+
+<script>
+    // Получаем элементы DOM
+    const valentineText = document.getElementById('valentine-text');
+    const yesButton = document.getElementById('yes-button');
+    const noButton = document.getElementById('no-button');
+    const valentineGif = document.querySelector('.valentine-gif');
+    const container = document.querySelector('.container');
+
+    // Обработчик для кнопки "Нет"
+    noButton.addEventListener('mouseover', () => {
+        // Получаем размеры контейнера и кнопки
+        const containerRect = container.getBoundingClientRect();
+        const buttonRect = noButton.getBoundingClientRect();
+
+        // Вычисляем максимальные координаты для перемещения
+        const maxX = containerRect.width - buttonRect.width;
+        const maxY = containerRect.height - buttonRect.height;
+
+        // Генерируем случайные координаты
+        const randomX = Math.random() * maxX;
+        const randomY = Math.random() * maxY;
+
+        // Перемещаем кнопку "Нет"
+        noButton.style.position = 'absolute';
+        noButton.style.left = `${randomX}px`;
+        noButton.style.top = `${randomY}px`;
+    });
+
+    // Обработчик для кнопки "Да"
+    yesButton.addEventListener('click', () => {
+        // Меняем текст и гифку
+        valentineText.innerHTML = '<span class="pink2">Ура, спасибушки) 💖<br>Ты лучшая!</span>';
+        valentineText.style.color = '#e91e63';
+        valentineGif.src = 'https://media.tenor.com/9_Cuwoj-m5wAAAAi/cute-cat.gif';
+
+        // Скрываем кнопки
+        yesButton.style.display = 'none';
+        noButton.style.display = 'none';
+    });
+</script>
+
+</body>
+</html>
