@@ -25,7 +25,7 @@
 
 ## 🖼️ Демонстрация
 
-![Valentine's Day Card Demo](index.png){: width="70%" }
+<img src="index.png" alt="Valentine's Day Card Demo" width="70%" />
 
 ---
 
